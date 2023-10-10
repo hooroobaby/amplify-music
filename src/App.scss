@@ -1,0 +1,189 @@
+$backgroud-color: #040404;
+
+.App {
+  background-color: $backgroud-color;
+  text-align: center;
+  height: calc(100vh);
+}
+
+.header {
+  // display: flex;
+  color: white;
+  padding: 10px;
+  a {
+    color: orange;
+  }
+  button {
+    padding: 10px;
+    background-color: orange;
+  }
+}
+
+.cardsWrap {
+  height: 100%;
+  color: orange;
+  padding: 30px 70px;
+  display: flex;
+  overflow: scroll;
+
+  .cards {
+    background-color: azure;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 160px;
+    height: 260px;
+    min-width: 200px;
+    padding: 1.2rem;
+    margin: 15px;
+
+    &:hover {
+      .playButton {
+        display: block;
+        color: orange;
+      }
+    }
+  }
+
+  .playButton {
+    display: none;
+    position: absolute;
+    top: 50%;
+    color: white;
+    left: 50%;
+    transform: translate(-50%, -50%); //志忠
+    z-index: 2;
+  }
+
+  .cardImg {
+    height: 160px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3),
+      0 1px 2px 0 rgba(0, 0, 0, 0.19);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    position: relative;
+  }
+
+  .cardContent {
+    padding: 1.2rem 0;
+    h3 {
+      font-weight: 600;
+    }
+  }
+}
+
+.addSong {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  input {
+    margin-right: 20px;
+    padding: 6px 10px;
+    width: 130px;
+    // border: 1px solid #ddb654;
+    // box-sizing: border-box;
+    // display: block;
+  }
+  .AddCancelIcon {
+    // border: 3px solid #eee;
+    background-color: orange;
+    padding: 5px;
+    // font-size: 20px;
+    box-shadow: 0 10px 30px 0 rgba(222, 200, 200, 0.3),
+      0 1px 2px 0 rgba(178, 152, 152, 0.19);
+    margin: 0 5px;
+    &:hover {
+      background-color: orange;
+      color: black;
+      cursor: pointer;
+    }
+  }
+}
+
+.addIcon {
+  position: absolute;
+  top: 4%; /* 垂直居中 */
+  color: white;
+  left: 85%; /* 水平居中 */
+}
+
+.divider {
+  width: 90%;
+  margin: auto;
+  background-color: white;
+  height: 1px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 3%;
+  left: 40%;
+  color: white;
+  font-size: small;
+}
+
+form {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.AudioPlayer {
+  position: absolute;
+  bottom: 10%;
+  left: 35%;
+  // background-color: aliceblue;
+  height: 100px;
+  color: white;
+}
+// .playerTitle {
+//   position: absolute;
+
+//   bottom: 14%;
+//   left: 50%;
+
+//   color: white;
+// }
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
