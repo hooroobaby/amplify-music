@@ -7,7 +7,7 @@ import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { CiPause1 } from "react-icons/ci";
 import { FaRegPlayCircle } from "react-icons/fa";
 
-const Main = (props) => {
+const Main = () => {
   const [songs, setSongs] = useState([]);
   const [songsPlaying, setSongsPlaying] = useState("");
   const [audioURL, setAudioURL] = useState("");
@@ -160,7 +160,7 @@ const Main = (props) => {
                     controls // display native player controls.
                     playing={songsPlaying === index && isPlaying} // when playingSong is fit with the current song. and user set it to play.
                     height="50px"
-                    width={"80%"}
+                    width={"70%"}
                     onPause={() => setIsPlaying(false)}
                     onPlay={() => setIsPlaying(true)}
                   />
