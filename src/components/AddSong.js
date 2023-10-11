@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
-import Amplify, { API, graphqlOperation, Storage } from "aws-amplify";
+import { API, graphqlOperation, Storage } from "aws-amplify";
 import { createSong } from "../graphql/mutations";
 
 const AddSong = ({ onUpload }) => {
@@ -73,9 +73,6 @@ const AddSong = ({ onUpload }) => {
           onChange={(e) => setIMGData(e.target.files[0])}
         />
         {/* <br /> */}
-        {/* <button className="AddCancelIcon" onClick={onUploadSong}>
-          Add Song
-        </button> */}
         <div className="AddCancelIcon" onClick={onUploadSong}>
           Add Song
         </div>

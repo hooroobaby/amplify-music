@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import Amplify, { API, graphqlOperation, Storage } from "aws-amplify";
+import { API, graphqlOperation, Storage } from "aws-amplify";
 import AddSong from "./AddSong";
 import ReactPlayer from "react-player";
 import { listSongs } from "../graphql/queries";
@@ -22,31 +22,27 @@ const Main = (props) => {
 
   const toggleSong = async (index) => {
     if (songsPlaying === index) {
-      setSongsPlaying("");
+      // setSongsPlaying("");
+      setIsPlaying(!isPlaying);
       return;
     }
 
-    const songFilePath = songs[index].filePath;
+    let songFilePath = songs[index].filePath;
     const regex = /key=(.*?)}/;
     const match = songFilePath.match(regex);
 
     console.log("songFilePath => ", songFilePath);
     try {
       if (match) {
-        const key = match[1]; // 获取匹配的部分
+        const key = match[1];
         console.log("key => ", key);
-        const fileAccessUrl = await Storage.get(key, { expires: 240 }); // 4分鐘後過期
-        console.log("fileAccessUrl => ", key, fileAccessUrl);
-        setAudioURL(fileAccessUrl);
-        setSongsPlaying(index);
-        return;
-      } else {
-        const fileAccessUrl = await Storage.get(songFilePath, { expires: 240 }); // 4分鐘後過期
-        console.log("fileAccessUrl => ", songFilePath, fileAccessUrl);
-        setAudioURL(fileAccessUrl);
-        setSongsPlaying(index);
-        return;
+        songFilePath = key;
       }
+      const fileAccessUrl = await Storage.get(songFilePath, { expires: 240 }); // 4分鐘後過期
+      console.log("fileAccessUrl => ", songFilePath, fileAccessUrl);
+      setAudioURL(fileAccessUrl);
+      setSongsPlaying(index);
+      return;
     } catch (error) {
       // 有失誤的話就不播東西
       console.error("error access the file from S3 => ", error);
@@ -69,7 +65,7 @@ const Main = (props) => {
           const imgPath = song.imgPath;
           const match = imgPath.match(regex);
           if (match) {
-            const key = match[1]; // 获取匹配的部分
+            const key = match[1];
             console.log("key => ", key);
             const imgAccessUrl = await Storage.get(key, { expires: 180 });
             console.log("key, imgAccessUrl => ", key, imgAccessUrl);
@@ -128,23 +124,18 @@ const Main = (props) => {
         {songs.map((song, index) => {
           return (
             <div className="cards" key={song.id}>
-              <div className="cardImg">
-                <img
-                  src={imgURLlist[index]}
-                  alt="pic"
-                  onClick={() => toggleSong(index)}
-                />
+              {/** 觸碰到cardImg就會播放或暫停 */}
+              <div className="cardImg" onClick={() => toggleSong(index)}>
+                <img src={imgURLlist[index]} alt={song.title} />
                 {songsPlaying !== index || !isPlaying ? (
                   <FaRegPlayCircle
                     className="playButton"
                     style={{ fontSize: "40px" }}
-                    onClick={() => toggleSong(index)}
                   />
                 ) : (
                   <CiPause1
                     className="playButton"
                     style={{ fontSize: "40px" }}
-                    onClick={() => toggleSong(index)}
                   />
                 )}
               </div>
@@ -156,18 +147,22 @@ const Main = (props) => {
 
               {songsPlaying === index ? (
                 <div className="AudioPlayer">
-                  <p>
+                  <div className="desc">
+                    <h3>{songs[songsPlaying].title}</h3>
+                    <p>{songs[songsPlaying].description}</p>
+                  </div>
+                  {/* <h3>
                     {songs[songsPlaying].title} -{" "}
                     {songs[songsPlaying].description}{" "}
-                  </p>
+                  </h3> */}
                   <ReactPlayer
                     url={audioURL}
-                    controls
-                    playing={songsPlaying === index}
+                    controls // display native player controls.
+                    playing={songsPlaying === index && isPlaying} // when playingSong is fit with the current song. and user set it to play.
                     height="50px"
+                    width={"80%"}
                     onPause={() => setIsPlaying(false)}
                     onPlay={() => setIsPlaying(true)}
-                    // onPause={() => toggleSong(index)}
                   />
                 </div>
               ) : null}

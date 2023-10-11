@@ -1,5 +1,18 @@
 $backgroud-color: #040404;
 
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.bounce {
+  animation: 2s bounce infinite;
+}
+
 .App {
   background-color: $backgroud-color;
   text-align: center;
@@ -25,6 +38,7 @@ $backgroud-color: #040404;
   padding: 30px 70px;
   display: flex;
   overflow: scroll;
+  scroll-behavior: smooth;
 
   .cards {
     background-color: azure;
@@ -120,10 +134,13 @@ $backgroud-color: #040404;
 
 .footer {
   position: absolute;
-  bottom: 3%;
+  bottom: 0%;
   left: 40%;
   color: white;
   font-size: small;
+  a {
+    color: white;
+  }
 }
 
 form {
@@ -134,12 +151,21 @@ form {
 }
 
 .AudioPlayer {
-  position: absolute;
-  bottom: 10%;
-  left: 35%;
-  // background-color: aliceblue;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0%;
+  left: 0;
+  background-color: rgb(21, 2, 57);
   height: 100px;
   color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(125, 116, 243, 0.5);
+  .desc {
+    color: orange;
+    margin-inline: 5%;
+  }
 }
 // .playerTitle {
 //   position: absolute;
