@@ -16,13 +16,14 @@ $backgroud-color: #040404;
 .App {
   background-color: $backgroud-color;
   text-align: center;
-  height: calc(100vh);
+  height: calc(100vh - 20px);
+  width: 100vw;
 }
 
 .header {
   // display: flex;
-  color: white;
-  padding: 10px;
+  color: orange;
+  padding: 10px 0;
   a {
     color: orange;
   }
@@ -33,15 +34,16 @@ $backgroud-color: #040404;
 }
 
 .cardsWrap {
-  height: 100%;
-  color: orange;
-  padding: 30px 70px;
+  height: calc(100vh - 200px);
+  width: 100%;
+  color: rgb(254, 254, 254);
+  padding: 30px 0 70px 20px;
   display: flex;
   overflow: scroll;
   scroll-behavior: smooth;
 
   .cards {
-    background-color: azure;
+    background-color: rgb(246, 138, 6);
     border-radius: 10px;
     overflow: hidden;
     width: 160px;
@@ -164,13 +166,13 @@ form {
   position: fixed;
   bottom: 0%;
   left: 0;
-  background-color: rgb(21, 2, 57);
+  background-color: rgb(0, 15, 21);
   height: 100px;
   color: white;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px 0px rgba(125, 116, 243, 0.5);
+  box-shadow: 0px 0px 5px 0px rgba(255, 216, 77, 0.886);
   .desc {
-    color: orange;
+    color: rgb(255, 255, 255);
     margin-inline: 3% 6%;
     max-width: 160px;
     justify-content: center;

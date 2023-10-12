@@ -64,16 +64,16 @@ const Main = () => {
 
       await Promise.all(
         songList.map(async (song) => {
-          const imgPath = song.imgPath;
+          let imgPath = song.imgPath;
           const match = imgPath.match(regex);
           if (match) {
             const key = match[1];
             console.log("key => ", key);
             imgPath = key;
           }
-            const imgAccessUrl = await Storage.get(imgPath, { expires: 180 });
-            console.log("imgPath, imgAccessUrl => ", imgPath, imgAccessUrl);
-            songsWithImgLinks.push(imgAccessUrl);
+          const imgAccessUrl = await Storage.get(imgPath, { expires: 180 });
+          console.log("imgPath, imgAccessUrl => ", imgPath, imgAccessUrl);
+          songsWithImgLinks.push(imgAccessUrl);
         })
       );
       setImageURLlist(songsWithImgLinks);
@@ -83,7 +83,7 @@ const Main = () => {
     }
   };
 
-  // 
+  //
   return (
     <div className="mainContent">
       <div className="header">
@@ -145,26 +145,23 @@ const Main = () => {
                 <h3>{song.title}</h3>
                 <p>{song.description}</p>
               </div>
-
               {songsPlaying === index ? (
                 <div className="AudioPlayer">
-                  <div className="desc">
-                    <h3>{songs[songsPlaying].title}</h3>
-                    <p>{songs[songsPlaying].description}</p>
-                  </div>
-                  {/* <h3>
-                    {songs[songsPlaying].title} -{" "}
-                    {songs[songsPlaying].description}{" "}
-                  </h3> */}
-                  <ReactPlayer
-                    url={audioURL}
-                    controls // display native player controls.
-                    playing={songsPlaying === index && isPlaying} // when playingSong is fit with the current song. and user set it to play.
-                    height="50px"
-                    width={"70%"}
-                    onPause={() => setIsPlaying(false)}
-                    onPlay={() => setIsPlaying(true)}
-                  />
+                  <>
+                    <div className="desc">
+                      <h3>{songs[songsPlaying].title}</h3>
+                      <p>{songs[songsPlaying].description}</p>
+                    </div>
+                    <ReactPlayer
+                      url={audioURL}
+                      controls // display native player controls.
+                      playing={songsPlaying === index && isPlaying} // when playingSong is fit with the current song. and user set it to play.
+                      height="50px"
+                      width={"70%"}
+                      onPause={() => setIsPlaying(false)}
+                      onPlay={() => setIsPlaying(true)}
+                    />
+                  </>
                 </div>
               ) : null}
             </div>
