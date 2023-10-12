@@ -86,13 +86,14 @@ const Main = () => {
   //
   return (
     <div className="mainContent">
-      <div className="header">
+      <div className="">
         {showAddSong ? (
           <AddSong
             onUpload={() => {
               setShowAddSong(false);
               fetchSongs();
             }}
+            onCancel={() => setShowAddSong(false)}
           />
         ) : (
           <AiOutlineAppstoreAdd

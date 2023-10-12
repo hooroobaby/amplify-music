@@ -3,10 +3,10 @@ $backgroud-color: #040404;
 @keyframes bounce {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(10px);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(25px);
   }
 }
 .bounce {
@@ -14,7 +14,7 @@ $backgroud-color: #040404;
 }
 
 .App {
-  background-color: $backgroud-color;
+  background: linear-gradient(to bottom, #333fff, #000467);
   text-align: center;
   height: calc(100vh - 20px);
   width: 100vw;
@@ -22,8 +22,8 @@ $backgroud-color: #040404;
 
 .header {
   // display: flex;
-  color: orange;
-  padding: 10px 0;
+  color: rgb(246, 138, 6);
+  padding: 30px 0;
   a {
     color: orange;
   }
@@ -37,7 +37,7 @@ $backgroud-color: #040404;
   height: calc(100vh - 200px);
   width: 100%;
   color: rgb(254, 254, 254);
-  padding: 30px 0 70px 20px;
+  padding: 10px 0 30px 30px;
   display: flex;
   overflow: scroll;
   scroll-behavior: smooth;
@@ -98,40 +98,69 @@ $backgroud-color: #040404;
 }
 
 .addSong {
-  display: flex;
-  width: fit-content;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
+  z-index: 2;
+  position: absolute;
+  background-color: rgb(170 181 224 / 63%);
+  // display: flex;
+  width: 30%;
+  left: 33.5%;
+  top: 30%;
+  height: 300px;
+  padding: 10px 20px;
+  color: white;
+
   input {
-    margin-right: 20px;
-    padding: 6px 10px;
-    width: 130px;
-    // border: 1px solid #ddb654;
-    // box-sizing: border-box;
+    // margin-right: 20px;
+    margin: 6px 15px 6px 20px;
+    width: 160px;
+    border: 1px solid #ddb654;
+    box-sizing: border-box;
     // display: block;
   }
-  .AddCancelIcon {
+  .AddIcon {
     // border: 3px solid #eee;
     background-color: orange;
-    padding: 5px;
+    padding: 6px;
+    color: white;
     // font-size: 20px;
+    width: 100px;
     box-shadow: 0 10px 30px 0 rgba(222, 200, 200, 0.3),
       0 1px 2px 0 rgba(178, 152, 152, 0.19);
-    margin: 0 5px;
+    margin: auto 10px;
     &:hover {
       background-color: orange;
       color: black;
       cursor: pointer;
     }
   }
+  .CancelIcon {
+    border: 1px solid #eee;
+    padding: 5px;
+    width: 100px;
+    &:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+  }
+
+  form {
+    display: block;
+
+    justify-content: center;
+    align-items: center;
+
+    .line {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .addIcon {
   position: absolute;
-  top: 4%; /* 垂直居中 */
+  top: 6%;
   color: white;
-  left: 85%; /* 水平居中 */
+  right: 20%;
 }
 
 .divider {
@@ -152,13 +181,6 @@ $backgroud-color: #040404;
   }
 }
 
-form {
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-}
-
 .AudioPlayer {
   width: 100%;
   display: flex;
@@ -166,7 +188,7 @@ form {
   position: fixed;
   bottom: 0%;
   left: 0;
-  background-color: rgb(0, 15, 21);
+  background-color: rgb(246, 138, 6);
   height: 100px;
   color: white;
   border-radius: 10px;
