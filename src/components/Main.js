@@ -20,6 +20,7 @@ const Main = () => {
     fetchSongs();
   }, []);
 
+  // play or pause the song
   const toggleSong = async (index) => {
     if (songsPlaying === index) {
       // setSongsPlaying("");
@@ -51,6 +52,7 @@ const Main = () => {
     }
   };
 
+  // fetch all the songs
   const fetchSongs = async () => {
     try {
       const songData = await API.graphql(graphqlOperation(listSongs));
@@ -67,14 +69,11 @@ const Main = () => {
           if (match) {
             const key = match[1];
             console.log("key => ", key);
-            const imgAccessUrl = await Storage.get(key, { expires: 180 });
-            console.log("key, imgAccessUrl => ", key, imgAccessUrl);
-            songsWithImgLinks.push(imgAccessUrl);
-          } else {
-            const imgAccessUrl = await Storage.get(imgPath, { expires: 180 });
-            console.log("key, imgAccessUrl => ", imgPath, imgAccessUrl);
-            songsWithImgLinks.push(imgAccessUrl);
+            imgPath = key;
           }
+            const imgAccessUrl = await Storage.get(imgPath, { expires: 180 });
+            console.log("imgPath, imgAccessUrl => ", imgPath, imgAccessUrl);
+            songsWithImgLinks.push(imgAccessUrl);
         })
       );
       setImageURLlist(songsWithImgLinks);
@@ -83,6 +82,8 @@ const Main = () => {
       console.log("error on fetching songs => ", error);
     }
   };
+
+  // 
   return (
     <div className="mainContent">
       <div className="header">
@@ -119,8 +120,8 @@ const Main = () => {
             <p>description</p>
           </div>
         </div>
-
         {/* end of sample cards */}
+
         {songs.map((song, index) => {
           return (
             <div className="cards" key={song.id}>
