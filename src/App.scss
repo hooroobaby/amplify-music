@@ -11,6 +11,9 @@ $backgroud-color: #040404;
 }
 .bounce {
   animation: 2s bounce infinite;
+  font-size: 30px;
+  position: absolute;
+  top: 2.8%;
 }
 
 .App {
@@ -102,17 +105,17 @@ $backgroud-color: #040404;
   position: absolute;
   background-color: rgb(170 181 224 / 63%);
   // display: flex;
-  width: 30%;
-  left: 33.5%;
+  width: 26%;
+  left: 36.5%;
   top: 30%;
   height: 300px;
-  padding: 10px 20px;
+  padding: 10px 0px 30px;
   color: white;
 
   input {
     // margin-right: 20px;
     margin: 6px 15px 6px 20px;
-    width: 160px;
+    width: 180px;
     border: 1px solid #ddb654;
     box-sizing: border-box;
     // display: block;
@@ -152,6 +155,9 @@ $backgroud-color: #040404;
 
     .line {
       margin-bottom: 10px;
+      &:nth-of-type(4) {
+        margin-bottom: 25px;
+      }
     }
   }
 }
@@ -195,7 +201,7 @@ $backgroud-color: #040404;
   box-shadow: 0px 0px 5px 0px rgba(255, 216, 77, 0.886);
   .desc {
     color: rgb(255, 255, 255);
-    margin-inline: 3% 6%;
+    margin-inline: 3% 10%;
     max-width: 160px;
     justify-content: center;
     align-items: center;

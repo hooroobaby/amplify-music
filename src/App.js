@@ -13,15 +13,7 @@ function App() {
       <div className="header">
         <h2>
           {" "}
-          Music Platform by Amplify &nbsp;{" "}
-          <FaAws
-            className="bounce"
-            style={{
-              fontSize: "30px",
-              position: "absolute",
-              top: "2.8%",
-            }}
-          />{" "}
+          Music Platform by Amplify &nbsp; <FaAws className="bounce" />{" "}
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Educate
         </h2>
       </div>
